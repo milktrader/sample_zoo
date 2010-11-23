@@ -10,7 +10,9 @@ end
 group :test do
   gem 'rspec', '2.0.1'
   
-  # dot dot dot
+  
+  # dot dot dot 
+  gem 'webrat'
   
   gem 'spork', '0.8.4'
 end
