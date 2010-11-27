@@ -12,7 +12,7 @@ group :test do
   
   
   # dot dot dot 
-  gem 'webrat'
+  gem 'webrat', '0.7.1'
   
   gem 'spork', '0.8.4'
 end
