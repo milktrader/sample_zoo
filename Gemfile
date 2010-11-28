@@ -6,6 +6,13 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 group :development do
   gem 'rspec-rails', '2.0.1'
   gem 'annotate-models', '1.0.4'
+  
+  # group :development do
+      # gem "wirble"
+      # gem "hirb"
+      # gem "awesome_print"
+  #   end
+  
 end
 
 group :test do
