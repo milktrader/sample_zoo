@@ -20,7 +20,7 @@ section {
 	font-size: 120%;
 	padding: 20px;
 	background: #CDBE70;
-}
+}         
 
 
 section h1 {
@@ -188,6 +188,14 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+ul.users {
+	margin-top: 1em;
+}
+
+ul.users.li {
+	list-style: none;
 }
 
 

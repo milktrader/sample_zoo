@@ -1,11 +1,43 @@
-# This file is corrupted and needs to be restored
-
-
-
 require 'spec_helper'
 
 describe UsersController do
  render_views
+ 
+ describe "GET 'index'" do
+   
+   describe "for non-signed-in users" do
+     it "should deny access" do
+       get :index
+       response.should redirect_to(signin_path)
+     end     
+   end
+   
+   describe "for signed-in users" do
+     
+     before(:each) do
+       @user = test_sign_in(Factory(:user))
+       Factory(:user, :email => "another@examplet.com")
+       Factory(:user, :email => "another@examplet.net")
+     end
+     
+     it "should be successful" do
+       get :index
+       response.should be_success
+     end
+     
+     it "should have the right title" do
+       get :index
+       response.should have_selector('title', :content => "All users")
+     end 
+     
+     it "should have an element for each user" do
+       get :index
+       User.all.each do |user|
+         response.should have_selector('li', :content => user.name)
+       end
+     end    
+   end
+ end
  
  describe "GET 'show'" do
    
@@ -43,8 +75,7 @@ describe UsersController do
     get :show, :id => @user
     response.should have_selector('td>a', :content => user_path(@user),
                                           :href => user_path(@user))    
-  end
-  
+  end  
  end
 
  describe "GET 'new'" do
@@ -82,8 +113,9 @@ describe UsersController do
           lambda do
             post :create, :user => @attr  
         end.should_not change(User, :count)
-   end
-    
+    end
+  end
+     
    describe "success" do
         
         before(:each) do
@@ -112,7 +144,7 @@ describe UsersController do
           controller.should be_signed_in        
         end
    end  
-end
+ end
          
  describe "GET 'edit" do
     
@@ -226,6 +258,6 @@ end
   end
 end     
  
-end
+
 
  
