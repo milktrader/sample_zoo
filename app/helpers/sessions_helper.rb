@@ -22,6 +22,11 @@ module SessionsHelper
     current_user = nil
   end
 
+  def deny_access
+    flash[:notice] = "Try to sign in please, it's for the good of the zoo!"
+    redirect_to signin_path
+  end
+  
   private
   
     def user_from_remember_token
