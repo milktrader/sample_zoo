@@ -1,6 +1,9 @@
 <h1>All users</h1>
 
+<%= will_paginate %>
+
 <ul class="users">
+	<!-- could not refactor per video -->
 	<% @users.each do |user|  %>
 		<li>
 			<%= gravatar_for user, :size => 30 %>
@@ -8,3 +11,5 @@
 		</li>
 	<% end %>
 </ul>
+
+<%= will_paginate %>
