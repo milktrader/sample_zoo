@@ -26,6 +26,10 @@ module SessionsHelper
     user == current_user
   end
 
+  def authenticate
+    deny_access unless signed_in?
+  end
+
   def deny_access    
     store_location
     flash[:notice] = "Try to sign in please, it's for the good of the zoo!"

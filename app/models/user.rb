@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
   
-  # def has_password? (submitted_password)
-  #     encrypted_password == encrypt(submitted_password) #because encryption always the same
-  #   end
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
   
   class << self 
     def authenticate(email, submitted_password)

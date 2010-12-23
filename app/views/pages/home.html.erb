@@ -1,3 +1,22 @@
+<% if signed_in? %>
+
+<table class="front" summary="For signed-in users">
+	<tr>
+		<td class="main">	
+			<h1 class="micropost">What's Zappening?</h1>
+			<%= render 'shared/micropost_form' %>
+			<%= render 'shared/feed' %>
+		</td>
+		<td class="sidebar round">
+			<%= render 'shared/user_info' %>
+		</td>		
+	</tr>	
+</table>
+
+
+<% else %>
+
+
 <h1>Sample Zoo</h1>
 <p>This is the sample zoo a boom a foo bar page.</p> 
 <p>	
@@ -7,5 +26,7 @@ Please note that various musings can be found at
 
 
 <%= link_to "Sign up now!", signup_path , :class => "signup_button round" %>
+
+<% end %>
 
 
